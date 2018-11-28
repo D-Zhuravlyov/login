@@ -1,5 +1,6 @@
 package com.bright.demo.model;
 
+import com.bright.demo.model.audit.DateAudit;
 import org.hibernate.annotations.NaturalId;
 
 import javax.persistence.Entity;
@@ -22,7 +23,7 @@ import java.util.Set;
 @Table(name = "users", uniqueConstraints = {
         @UniqueConstraint(columnNames = {"email"})
 })
-public class User {
+public class User  extends DateAudit {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -44,7 +45,7 @@ public class User {
     private String email;
 
     @NotBlank
-    @Size(max = 100)
+    @Size(min = 6, max = 100)
     private String password;
 
     @NotBlank
