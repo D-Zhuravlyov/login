@@ -54,9 +54,13 @@
             <version>0.9.0</version>
         </dependency>
         <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-            <scope>runtime</scope>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-tomcat</artifactId>
+            <scope>provided</scope>
         </dependency>
         <!-- For Java 8 Date/Time Support -->
         <dependency>
@@ -151,7 +155,7 @@
                 <version>2.0.6</version>
                 <configuration>
                     <processTypes>
-                        <web>java -Dserver.port=$PORT spring.datasource.url= $JDBC_DATABASE_URL spring.datasource.username= $JDBC_DATABASE_USERNAME spring.datasource.password=$JDBC_DATABASE_PASSWORD $JAVA_OPTS -jar target/*.jar</web>
+                        <web>java -Dserver.port=$PORT $JAVA_OPTS -jar target/*.jar</web>
                     </processTypes>
                 </configuration>
             </plugin>
