@@ -1,4 +1,4 @@
-Registeration and login application.
+Registration and login application.
 
 Building and running:
 
@@ -8,3 +8,6 @@ Building and running:
 
 home page:
 http://localhost:5000/index.html
+
+Application demo:
+https://login-demo-bright.herokuapp.com
