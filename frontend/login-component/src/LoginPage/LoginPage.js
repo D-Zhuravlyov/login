@@ -12,7 +12,7 @@ class LoginPage extends React.Component {
         this.props.dispatch(userActions.logout());
 
         this.state = {
-            username: '',
+            usernameOrEmail: '',
             password: '',
             submitted: false
         };
@@ -30,31 +30,31 @@ class LoginPage extends React.Component {
         e.preventDefault();
 
         this.setState({submitted: true});
-        const {username, password} = this.state;
+        const {usernameOrEmail, password} = this.state;
         const {dispatch} = this.props;
-        if (username && password) {
-            dispatch(userActions.login(username, password));
+        if (usernameOrEmail && password) {
+            dispatch(userActions.login(usernameOrEmail, password));
         }
     }
 
     render() {
         const {loggingIn} = this.props;
-        const {username, password, submitted} = this.state;
+        const {usernameOrEmail, password, submitted} = this.state;
         if (loggingIn) {
-            const path = `"/users/${username}`;
+            const path = `/users/${usernameOrEmail}`;
             return  <Redirect to={{
-                pathname: password,
+                pathname: path,
             }} />
         }
         return (
             <div className="col-md-6 col-md-offset-3">
                 <h2>Login</h2>
                 <form name="form" onSubmit={this.handleSubmit}>
-                    <div className={'form-group' + (submitted && !username ? ' has-error' : '')}>
-                        <label htmlFor="username">Username</label>
-                        <input type="text" className="form-control" name="username" value={username}
+                    <div className={'form-group' + (submitted && !usernameOrEmail ? ' has-error' : '')}>
+                        <label htmlFor="usernameOrEmail">Username or email</label>
+                        <input type="text" className="form-control" name="usernameOrEmail" value={usernameOrEmail}
                                onChange={this.handleChange}/>
-                        {submitted && !username &&
+                        {submitted && !usernameOrEmail &&
                         <div className="help-block">Username is required</div>
                         }
                     </div>
